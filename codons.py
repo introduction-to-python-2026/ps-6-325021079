@@ -1,5 +1,11 @@
+
 def create_codon_dict(file_path):
     my_dic = {}
-    with open(file_path) as codons_file:
-        my_dic = {row.strip().split('\t')[0]: row.strip().split('\t')[2] for row in codons_file.readlines()}
+    with open(file_path) as file:
+        rows_from_file = file.readlines()
+    for row in rows_from_file:
+        parts = row.strip().split('\t')
+        codon = parts[0]
+        amino_acid = parts[2]
+        my_dic[codon] = amino_acid
     return my_dic
